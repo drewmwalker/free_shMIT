@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<script src="js/superagent.js"></script>
+<button onclick="request()" style="font-size:3em">Ping API</button>
+<script>
+
+function request(){
+var url = "/read";
+    superagent
+        .get(url)
+        .end(function(err, res){
+            if (err || !res.ok) {
+                console.log(err);
+            } else {
+                console.log(res);                
+            }
+        });
+}
+
+</script>
+
+</html>

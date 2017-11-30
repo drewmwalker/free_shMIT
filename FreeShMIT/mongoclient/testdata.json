@@ -1,0 +1,7 @@
+{
+    "data":[{"user":1,"latitude":42.35, "longitude":-71.09},
+        {"user":2,"latitude":42.351, "longitude":-71.093},
+        {"user":3,"latitude":42.352, "longitude":-71.092},
+        {"user":4,"latitude":42.353, "longitude":-71.091}
+    ]
+}
