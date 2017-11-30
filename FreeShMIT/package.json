@@ -1,14 +1,23 @@
 {
-  "name": "httpserver",
+  "name": "mongoclient",
   "version": "1.0.0",
-  "description": "",
+  "description": "mongo client from nodejs",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "abel@mit.edu",
+  "license": "MIT",
   "dependencies": {
-    "http-server": "^0.10.0"
+    "http-server": "^0.10.0",
+    "mongodb": "^2.2.31"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/drewmwalker/free_shMIT"
+  },
+  "scripts": {
+    "start": "node index.js"
   }
 }
