@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
     <script src="js/superagent.js"></script>
-    <button onclick="request()" style="font-size:3em">Ping API</button>
     <script>
     
     function request(){
@@ -18,6 +17,8 @@
                 }
             });
     }
+    
+    request()
     
     </script>
   <head>
@@ -45,28 +46,62 @@
           center: new google.maps.LatLng(42.3597,-71.0924),
           mapTypeId: 'terrain'
         });
-request()
-        // Create a <script> tag and set the USGS URL as the source.
-        //var script = document.createElement('script');
-        // This example uses a local copy of the GeoJSON stored at
-        // http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_week.geojsonp
-        //script.src = 'http://18.111.117.219:8080/testdatacallback.js';
-        //document.getElementsByTagName('head')[0].appendChild(script);
-      }
-
-      // Loop through the results array and place a marker for each
-      // set of coordinates.
+      };
+      
       function results(data) {
+        infos = [];
         for (var i = 0; i < data.length; i++) {
+          //var time=data[i].time-date();
           var latLng = new google.maps.LatLng(data[i].latitude,data[i].longitude);
-          //console.log(data[i].latitude);
+          //var title = 'data[i].itemDescription';
+          var content = data[i].itemDescription + '<br>' + '<br>'+ data[i].localDescription;
+          //+ '<br>'+ (data[i].time - date());
+
+          infowindow= new google.maps.InfoWindow();
+          
           var marker = new google.maps.Marker({
             position: latLng,
-            //add descriptions here
+            title: "Uluru (Ayers Rock)",
             map: map
           });
-        }
-      }
+
+          /*google.maps.event.addListener(markersList[i],'click',function(){
+            windowList[i].open(map,markerList[i]);
+          });*/
+          
+          google.maps.event.addListener(marker,'click', (function(marker,content,infowindow) {
+            return function() {
+        
+            //close the previous info-window 
+            closeInfos();
+        
+            infowindow.setContent(content);
+            infowindow.open(map,marker);
+        
+            //keep the handle, in order to close it on next click event 
+            infos[0]=infowindow;
+        
+            };
+          })(marker,content,infowindow)); 
+
+    };
+  };
+
+function closeInfos(){
+ 
+   if(infos.length > 0){
+ 
+      // detach the info-window from the marker ... undocumented in the API docs 
+      infos[0].set("marker", null);
+ 
+      // and close it 
+      infos[0].close();
+ 
+      // blank the array 
+      infos.length = 0;
+   };
+};
+
     </script>
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA_7mRFYWKQrtVS3IHk1WNDZxKRCoeBmYM&callback=initMap">

@@ -10,15 +10,16 @@
  <label>Post some stuff!</label><br>
  <input type="text" name="itemDescription" placeholder="Enter the free shMIT..." required>
  <p><input type="text" name="localDescription" placeholder="Enter location description..." required></p>
- <p><input type="text" id="latitude" name="latitude" value="" required></p> 
- <p><input type="text" id="longitude" name="longitude" value="" required></p>
+ <p><input type="hidden" id="latitude" name="latitude" value="" required></p> 
+ <p><input type="hidden" id="longitude" name="longitude" value="" required></p>
  <input type="submit" value="Add Entry">
  </form>
- <p>Click the button to get your coordinates.</p>
+ <p><a href="https://18.111.30.137/locations">Go To The Map</a></p>
+ <!--<p>Click the button to get your coordinates.</p>
 
 <button onclick="getLocation()">Try It</button>
 <p><strong>Note:</strong> The geolocation property is not supported in IE8 and earlier versions.</p>
-
+ -->
 
 <p id="demo"></p>
  </body>

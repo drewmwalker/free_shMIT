@@ -18,7 +18,7 @@ var options={
 
 var mongoose = require("mongoose");
 mongoose.Promise = global.Promise;
-var url="mongodb://18.111.21.237:27017/node-demo";
+var url="mongodb://18.111.30.137:27017/node-demo";
 
 mongoose.connect(url,function(err,database){
     if(err){ console.log('failed to connect: ' + err); return;}
@@ -45,8 +45,8 @@ app.post("/addedentry", (req, res) => {
   
    myData.save()
         .then(item => {
-            res.send(req.body);
-            
+            //res.send(req.body);
+            res.sendFile(__dirname + "/googlemaps.html");
         })
         .catch(err => {
             res.status(400).send("Unable to save to database");
