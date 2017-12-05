@@ -52,11 +52,13 @@
       function results(data) {
         infos = [];
         for (var i = 0; i < data.length; i++) {
-          var time=data[i].time-date();
+          var currentTime = new Date();
+          var postingTime = new Date(data[i].time);
+          var time=Math.round((currentTime - postingTime)/60000);
           var latLng = new google.maps.LatLng(data[i].latitude,data[i].longitude);
           //var title = 'data[i].itemDescription';
-          var content = data[i].itemDescription + '<br>' +  data[i].localDescription + '<br>'+ time + ' ago';
-          //+ '<br>'+ (data[i].time - date());
+          var content = data[i].itemDescription + '<br>' +  data[i].localDescription + '<br>'+ time +' minutes ago';
+          //currentTime.valueOf()+ '<br>'+ data[i].time.valueOf();
 
           infowindow= new google.maps.InfoWindow();
           
