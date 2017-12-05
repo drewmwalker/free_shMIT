@@ -52,10 +52,10 @@
       function results(data) {
         infos = [];
         for (var i = 0; i < data.length; i++) {
-          //var time=data[i].time-date();
+          var time=data[i].time-date();
           var latLng = new google.maps.LatLng(data[i].latitude,data[i].longitude);
           //var title = 'data[i].itemDescription';
-          var content = data[i].itemDescription + '<br>' + '<br>'+ data[i].localDescription;
+          var content = data[i].itemDescription + '<br>' +  data[i].localDescription + '<br>'+ time + ' ago';
           //+ '<br>'+ (data[i].time - date());
 
           infowindow= new google.maps.InfoWindow();
