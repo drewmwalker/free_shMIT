@@ -18,7 +18,7 @@ var options={
 
 var mongoose = require("mongoose");
 mongoose.Promise = global.Promise;
-var url="mongodb://18.111.101.241:27017/node-demo";
+var url="mongodb://18.217.62.139:27017/node-demo";
 
 mongoose.connect(url,function(err,database){
     if(err){ console.log('failed to connect: ' + err); return;}
